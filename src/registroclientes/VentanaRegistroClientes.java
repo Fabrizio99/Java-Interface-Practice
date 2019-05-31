@@ -66,6 +66,7 @@ public class VentanaRegistroClientes extends javax.swing.JFrame {
         });
 
         btnListar.setText("Listar");
+        btnListar.setEnabled(false);
         btnListar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnListarActionPerformed(evt);
@@ -73,6 +74,7 @@ public class VentanaRegistroClientes extends javax.swing.JFrame {
         });
 
         btnModificar.setText("Modificar");
+        btnModificar.setEnabled(false);
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnModificarActionPerformed(evt);
@@ -80,6 +82,7 @@ public class VentanaRegistroClientes extends javax.swing.JFrame {
         });
 
         btnEliminar.setText("Eliminar");
+        btnEliminar.setEnabled(false);
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
@@ -189,9 +192,15 @@ public class VentanaRegistroClientes extends javax.swing.JFrame {
         listaClientes.insertarFinal(nuevoCliente);
         JOptionPane.showMessageDialog(null, "El cliente " + nuevoCliente.getNombre() + " ha sido agregado");
         limpiarCampos();
+        btnEliminar.setEnabled(true);
+        btnListar.setEnabled(true);
+        btnModificar.setEnabled(true);
     }//GEN-LAST:event_btnAnadirActionPerformed
 
     private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
+        if(listaClientes.esVacia()){
+            JOptionPane.showMessageDialog(null, "Lista Vacia.");
+        }
         modelo.setRowCount(0);
         listaClientes.insertarTabla();
         System.out.println(tablaRegistro.getRowCount());
@@ -204,6 +213,7 @@ public class VentanaRegistroClientes extends javax.swing.JFrame {
             } else {
                 VentanaModificar ventana = new VentanaModificar();
                 ventana.setVisible(true);
+                ventana.setLocationRelativeTo(this);
                 btnModificar.setText("Guardar");
                 btnAnadir.setEnabled(false);
                 btnEliminar.setEnabled(false);
@@ -227,6 +237,7 @@ public class VentanaRegistroClientes extends javax.swing.JFrame {
         }else{
             VentanaEliminar ventana = new VentanaEliminar();
             ventana.setVisible(true);
+            ventana.setLocationRelativeTo(this);
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
 

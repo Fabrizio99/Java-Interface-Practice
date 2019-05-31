@@ -111,12 +111,4 @@ public class Lista {
         buscarIndice(indice).setEmail(persona.getEmail());
     }
 
-    public void imprimirLista() {
-        Nodo auxiliar = top;
-        while (auxiliar != null) {
-            System.out.print(auxiliar.getDNI() + "-" + auxiliar.getNombre() + "->");
-            auxiliar = auxiliar.getSgte();
-        }
-        System.out.println("");
-    }
 }
