@@ -6,5 +6,4 @@ public class RegistroClientes {
         VentanaRegistroClientes nuevaVentana = new VentanaRegistroClientes();
         nuevaVentana.setVisible(true);
     }
-    
 }
